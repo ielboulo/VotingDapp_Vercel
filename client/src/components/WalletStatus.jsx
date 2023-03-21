@@ -11,15 +11,25 @@ function WalletStatus() {
 
   useEffect(() => {
     const checkIsAdmin = async () => {
+      try {
+        if (contract && web3 && accounts) { 
+          const ownerAddress = await contract.methods.owner().call();
+    
+          const isAdmin = (ownerAddress.toLowerCase() === accounts[0].toLowerCase() );
+    
+          setIsAdmin(isAdmin);
+        }
 
-      const ownerAddress = await contract.methods.owner().call();
-      const isAdmin = (ownerAddress.toLowerCase() === accounts[0].toLowerCase() );
-      console.log("isAdmin ", isAdmin);
+      }
+      catch (error)
+      {
+        console.log(error);
+      }
 
-      setIsAdmin(isAdmin);
+
     };
     checkIsAdmin();
-  }, [contract, web3]);
+  }); //, [contract, web3]
 
   //     event VoterRegistered(address voterAddress); 
 
@@ -33,7 +43,7 @@ function WalletStatus() {
                     PastE.voterAddress = voterReg.returnValues.voterAddress;
                     return PastE;
                   });
-    //console.log("WalletStatus accounts[0], ", accounts[0]);
+
                 const isRegistered = _VoterRegistered.some(event => (event.voterAddress.toLowerCase() === accounts[0].toLowerCase()));
                 setIsRegistered(isRegistered);
                 setPastEvents(_VoterRegistered);
@@ -54,9 +64,9 @@ function WalletStatus() {
             :
             (
             isRegistered ?
-                (<p className="p-conn">Address Status: You're a Registered Voter!</p>)
+                (<p className="p-conn">Welcome: You're a Registered Voter!</p>)
                 :
-                (<p className="p-conn">Address Status: You're Not Registered Yet!</p>)
+                (<p className="p-conn">Welcome : You're Not Registered Yet!</p>)
             )
         }
     </div>
