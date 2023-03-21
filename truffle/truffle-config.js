@@ -41,10 +41,13 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-// require('dotenv').config();
-// const { MNEMONIC, PROJECT_ID } = process.env;
+require('dotenv').config();
+//const { MNEMONIC, INFURA_ID } = process.env;
+//const MNEMONIC = [process.env.MNEMONIC];
+//const INFURA_ID = [process.env.INFURA_ID];
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+require('dotenv').config();
 
 module.exports = {
   /**
@@ -70,6 +73,33 @@ module.exports = {
      port: 8545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
     },
+    goerli: {
+      provider: () => new HDWalletProvider(`${process.env.MNEMONIC}`, `https://goerli.infura.io/v3/${process.env.INFURA_ID}`),
+      network_id: 5,       // Goerli's id
+      confirmations: 2,    // # of confirmations to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: false,     // Skip dry run before migrations? (default: false for public nets )
+    
+      networkCheckTimeoutnetworkCheckTimeout: 10000,
+      gas: 3000000
+    },
+    mumbai: {
+      provider: function() {
+        return new HDWalletProvider(`${process.env.MNEMONIC}`, `https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_ID}`)
+      },
+      network_id: 80001
+    },
+    // mumbai: {
+    //   provider: () => new HDWalletProvider(`${process.env.MNEMONIC}`, `https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_ID}`),
+    //   network_id: 80001,       // Mumbai's id 80001
+    //   confirmations: 2,    // # of confirmations to wait between deployments. (default: 0)
+    //   timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+    //   skipDryRun: false,     // Skip dry run before migrations? (default: false for public nets )
+    
+    //   networkCheckTimeoutnetworkCheckTimeout: 10000,
+    //   gas: 3000000
+    // },
+
     //
     // An additional network, but with some advanced options…
     // advanced: {

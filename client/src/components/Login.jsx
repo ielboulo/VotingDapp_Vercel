@@ -6,7 +6,7 @@ function Login() {
 
   const [web3, setWeb3] = useState(null);
   const [accounts, setAccounts] = useState([]);
-  const allowedNetworks = [5, 1337]; // Goerli Testnet & localhost (Ganache)
+  const allowedNetworks = [5, 1337, 80001]; // Goerli Testnet & localhost (Ganache)
 
   useEffect(() => {
     const init = async () => {
