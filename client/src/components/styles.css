@@ -1,0 +1,96 @@
+html {
+  font-size: 10px;
+  font-family: sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.title_dapp{
+  font-weight: bold;
+  text-align: center;
+  background-color: #003060;
+  color: white;
+  padding: 30px;
+}
+.title_dapp_2 {
+  font-weight: bold;
+  text-align: center;
+  background-color: #0097b2;
+  color: white;
+  padding: 30px;
+}
+
+.btn-conn {
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 24px;
+  padding: 10px;
+}
+
+.p-conn{
+  background-color: #caebe9;
+  color: #003060;
+  align-items: center;
+  text-align: center;
+} 
+
+button + button {
+  align-items: center; 
+  justify-content: center;
+  margin-left: 130px;
+
+}
+
+
+.bp {
+  background-color: #0097b2;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  width: 230px;
+}
+
+.button_1 {
+  background-color: #0097b2;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  left: "50%";
+  margin-left: 200px;
+  width: 230px;
+}
+
+.title_phase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #003060;
+  color: white;
+}
+
+.input_prop {
+  margin-left: 150px;
+}
+.winn {
+  background-color: #adc107;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+
+}
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+}
