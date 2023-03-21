@@ -16,9 +16,9 @@ function EthProvider({ children }) {
           let address, contract, txhash;
   
           // Vérifie que le réseau est autorisé
-          if (networkID !== 5 && networkID !== 1337) {
+          if (networkID !== 5 && networkID !== 1337 && networkID !== 80001) {
             console.log("Network not authorized = ", networkID);
-            //return;
+            return;
           }
   
           if (artifact.networks[networkID]) {
