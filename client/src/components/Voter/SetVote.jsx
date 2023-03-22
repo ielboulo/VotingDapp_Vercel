@@ -1,23 +1,61 @@
 import { useState, useEffect } from "react";
-import useEth from "../contexts/EthContext/useEth";
+import useEth from "../../contexts/EthContext/useEth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SetVote() {
  const { state: {accounts, contract, web3}} = useEth();
  const [inputVote,  setInputVote] = useState("");
+ const [votedProposalID, setVotedProposalID] = useState(null);
 
- const [votedProposalID, setVotedProposalID] = useState("");
+
+const [currentStatus, setCurrentStatus] = useState(0);
+
+useEffect(() => {
+  const getStatus = async () => {
+    if (!contract) {
+      return;
+    }
+    const status = await contract.methods.workflowStatus().call();
+    setCurrentStatus(status);
+  };
+  getStatus();
+}, [contract]); // Ilham : check 
+
 
  const handleAddVoteChange = e => {
-   console.log("Proposal id voted = ", e.target.value);
-
+  if (/^\d+$|^$/.test(e.target.value)) {
    setInputVote(e.target.value);
+  }
  };
 
  const _addVote = async () => {
    try {
-    await contract.methods.setVote(inputVote).send({from : accounts[0]});
-} catch (err) {
+    if( inputVote && parseInt(currentStatus) === 4) //VotingSessionEnded
+      {
+        await contract.methods.setVote(inputVote).send({from : accounts[0]});
+        toast.success("SUCCESS : You Voted ! ", {
+          closeButton: true,
+          autoClose: true,
+          position: 'top-center',
+        });
+      }
+      else
+      {
+        toast.error("ERROR : Vote is Not Possible!", {
+          closeButton: true,
+          autoClose: true,
+          position: 'top-center',
+        });
+      }
+    }
+       catch (err) {
        console.error(err);
+       toast.error("ERROR : Vote Failed!", {
+        closeButton: true,
+        autoClose: true,
+        position: 'top-center',
+      });
      }
  
 };
@@ -37,7 +75,7 @@ useEffect(() => {
         }
     }
     getPastEvent();
-  });
+  }); // [contract] ? // Ilham
 
 
  return (
@@ -47,7 +85,7 @@ useEffect(() => {
          className="input_prop"
          type="text"
          size="50"
-         placeholder="Proposal ID"
+         placeholder="Choose Your Favorite Proposal ID"
          value={inputVote}
          onChange={handleAddVoteChange}
        />

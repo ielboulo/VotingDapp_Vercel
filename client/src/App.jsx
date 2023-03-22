@@ -1,16 +1,21 @@
 import { EthProvider } from "./contexts/EthContext";
+//Connexion
 import Login from "./components/Login";
-import AddVoter from "./components/AddVoter";
-import ProposalPhase from "./components/ProposalPhase.jsx";
-import VotePhase from "./components/VotePhase.jsx";
-import VoteTally from "./components/VoteTally";
-import VoteWinner from "./components/VoteWinner";
-import StatusWatcher from "./components/StatusWatcher"
-import ListProposals from "./components/ListProposals"
-import GetOneProp from "./components/GetOneProp"
-import SetVote from "./components/SetVote"
-import AddProposal from "./components/AddProposal"
-import WalletStatus from "./components/WalletStatus"
+import LoginStatus from "./components/LoginStatus"
+
+//Admin
+import AddVoter from "./components/Admin/AddVoter";
+import ProposalPhase from "./components/Admin/ProposalPhase.jsx";
+import VotePhase from "./components/Admin/VotePhase.jsx";
+import VoteTally from "./components/Admin/VoteTally";
+import VoteWinner from "./components/Admin/VoteWinner";
+import StatusWatcher from "./components/Admin/StatusWatcher"
+
+//Voter
+import ListProposals from "./components/Voter/ListProposals"
+import GetOneProp from "./components/Voter/GetOneProp"
+import SetVote from "./components/Voter/SetVote"
+import AddProposal from "./components/Voter/AddProposal"
 
 
 function App() {
@@ -26,11 +31,10 @@ function App() {
           <br/>
 
           <Login />
-          <br />
-          <WalletStatus/>
+          <LoginStatus/>
           <hr />
 
-          <h1 className="title_phase"> Status Watcher  </h1>
+          <h1 className="title_phase"> Workflow Status </h1>
           <br />
           <StatusWatcher />
           <hr />

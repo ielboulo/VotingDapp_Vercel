@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import useEth from "../contexts/EthContext/useEth";
+import useEth from "../../contexts/EthContext/useEth";
 
 function ListProposals() {
   const { state: { contract,txhash, web3 } } = useEth();

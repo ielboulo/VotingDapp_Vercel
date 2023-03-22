@@ -83,7 +83,7 @@ button + button {
   color: white;
   font-weight: bold;
   padding: 10px;
-
+  text-align: center;
 }
 table {
   border-collapse: collapse;

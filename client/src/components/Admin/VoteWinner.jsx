@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import useEth from "../contexts/EthContext/useEth";
+import useEth from "../../contexts/EthContext/useEth";
 
 function VoteWinner() {
   const { state: {contract, web3, accounts} } = useEth();
-  const [winner, setWinner] = useState('');
+  const [winner, setWinner] = useState(null);
 
 
   const getWinner = async () => {
@@ -16,8 +16,10 @@ function VoteWinner() {
     const desc = proposal.description;
     const votes =  proposal.voteCount;
 
-    setWinner(`The winner is : "${winningProposalID}" for the Proposal : "${desc}" with "${votes}" votes`);
-  };
+    if(parseInt(winningProposalID) !== 0) { 
+      setWinner(`The winner is : "${winningProposalID}" for the Proposal : "${desc}" with "${votes}" votes`);
+    }
+};
 
 
   return (
@@ -25,10 +27,12 @@ function VoteWinner() {
       <button className="button_1" onClick={getWinner}>
         Who is the winner ?  
       </button>
-      
-      <p className="winn" >
-      {winner}
-      </p>
+      {
+        winner ?
+        <p className="winn" > {winner} </p>
+        :
+        <p className="winn" > No Proposal Available Or No Vote Yet </p>
+      }
     </div>
   );
 }

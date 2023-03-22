@@ -20777,8 +20777,8 @@
         }
       },
       "links": {},
-      "address": "0x350b3f7B64a980Ec9cA8c5a137a7E6655123f327",
-      "transactionHash": "0x90d4b3110ed5d3a4fa30c399d31440736ba04144851f0bd7102690ec53990869"
+      "address": "0x911Bdf96B232D2448449EbA7099C9883C9dE3B20",
+      "transactionHash": "0xd7b076afdfdbbb6b8eb9f77db1e0be6a6adc28cef4678a58f33b66425e420961"
     },
     "80001": {
       "events": {
@@ -20867,12 +20867,12 @@
         }
       },
       "links": {},
-      "address": "0xE6481f3142C193991EC4b81695D2948E9bFdBe70",
-      "transactionHash": "0x5a18624b77cc56d893eb5170105bf030b020f77769bcd0f2111dc9db2be717af"
+      "address": "0x57E437565Eb282fbd596472C4c3CEA258E66c46B",
+      "transactionHash": "0x28aeffcd76dbd17f9ee92076128352ef92a0ab1eddba6de10057f8d82cd4c3e3"
     }
   },
   "schemaVersion": "3.4.12",
-  "updatedAt": "2023-03-21T20:12:50.989Z",
+  "updatedAt": "2023-03-22T08:04:19.265Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "@ielboulo @ivxry",

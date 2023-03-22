@@ -1,38 +1,29 @@
 import { useState, useEffect } from "react";
 import useEth from "../contexts/EthContext/useEth";
 
-function WalletStatus() {
+function LoginStatus() {
   const { state: { contract,accounts, web3 } } = useEth();
-  const [isRegistered, setIsRegistered] = useState([]);
-  const [pastEvents, setPastEvents] = useState([]);
-
+  const [isRegistered, setIsRegistered] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-
 
   useEffect(() => {
     const checkIsAdmin = async () => {
       try {
         if (contract && web3 && accounts) { 
           const ownerAddress = await contract.methods.owner().call();
-    
           const isAdmin = (ownerAddress.toLowerCase() === accounts[0].toLowerCase() );
-    
           setIsAdmin(isAdmin);
         }
-
       }
       catch (error)
       {
         console.log(error);
       }
-
-
     };
     checkIsAdmin();
   }); //, [contract, web3]
 
   //     event VoterRegistered(address voterAddress); 
-
   useEffect(() => {
     async function getPastEvent() {
         try {
@@ -45,9 +36,8 @@ function WalletStatus() {
                   });
 
                 const isRegistered = _VoterRegistered.some(event => (event.voterAddress.toLowerCase() === accounts[0].toLowerCase()));
-                setIsRegistered(isRegistered);
-                setPastEvents(_VoterRegistered);
-            }
+                console.log("LoginStatus isRegistered = " , isRegistered);
+                setIsRegistered(isRegistered);            }
         }
         catch (error) {
             console.error("WalletStatus : ", error);
@@ -73,4 +63,4 @@ function WalletStatus() {
   );
 }
 
-export default WalletStatus;
+export default LoginStatus;

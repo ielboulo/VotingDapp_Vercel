@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import useEth from "../contexts/EthContext/useEth";
+import useEth from "../../contexts/EthContext/useEth";
 
 function StatusWatcher() {
   const { state: {contract, web3}} = useEth();
   const [currentStatus, setCurrentStatus] = useState(0);
+  
   const [statusSTR, setStatusSTR] = useState({
     0: { name: "RegisteringVoters" },
     1: { name: "ProposalsRegistrationStarted"},
@@ -40,8 +41,8 @@ function StatusWatcher() {
   });
 
   return (
-    <div>
-        <br/>
+    <div style={{ marginLeft: '30px' }}>
+      <p>The smart contract achieved the following steps :</p>
       <ol>
         {Object.entries(statusSTR)
           .filter(([status, { name }]) => Number(status) <= currentStatus)

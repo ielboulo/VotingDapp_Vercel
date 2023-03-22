@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useEth from "../contexts/EthContext/useEth";
+import useEth from "../../contexts/EthContext/useEth";
 
 function GetOneProp() {
  const { state: {accounts, contract, web3 }} = useEth();
@@ -29,8 +29,6 @@ function GetOneProp() {
     
     setOneProposal_desc(desc);
     setOneProposal_votes(votes);
-    //setOneProposal(`ID : "${inputPropId}" : Proposal content :  "${desc}", VoteCount : "${votes}"`);
-
      } 
      catch (err) {
        console.log(err);
