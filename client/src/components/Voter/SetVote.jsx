@@ -75,7 +75,7 @@ useEffect(() => {
         }
     }
     getPastEvent();
-  }); // [contract] ? // Ilham
+  }); // [contract]
 
 
  return (
