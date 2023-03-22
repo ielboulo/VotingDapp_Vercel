@@ -29,7 +29,7 @@ function AddProposal() {
   const _addProposal = async () => {
     try {
 
-      if( inputProposal && parseInt(currentStatus) === 4) //VotingSessionEnded
+      if( inputProposal && parseInt(currentStatus) === 0) //VotingSessionEnded
       {
         await contract.methods.addProposal(inputProposal).send({from : accounts[0]});
         toast.success("SUCCESS : Add Proposal Done ! ", {
