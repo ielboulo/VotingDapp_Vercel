@@ -5,8 +5,8 @@ import LoginStatus from "./components/LoginStatus"
 
 //Admin
 import AddVoter from "./components/Admin/AddVoter";
-import ProposalPhase from "./components/Admin/ProposalPhase.jsx";
-import VotePhase from "./components/Admin/VotePhase.jsx";
+import ProposalPhase from "./components/Admin/ProposalPhase";
+import VotePhase from "./components/Admin/VotePhase";
 import VoteTally from "./components/Admin/VoteTally";
 import VoteWinner from "./components/Admin/VoteWinner";
 import StatusWatcher from "./components/Admin/StatusWatcher"

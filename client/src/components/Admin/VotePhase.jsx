@@ -4,7 +4,7 @@ import useEth from "../../contexts/EthContext/useEth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function ProposalPhase() {
+function VotePhase() {
   const { state: {contract, accounts} } = useEth();
   const [loading, setLoading] = useState(false);
  
@@ -101,4 +101,4 @@ function ProposalPhase() {
   );
 }
 
-export default ProposalPhase;
+export default VotePhase;
