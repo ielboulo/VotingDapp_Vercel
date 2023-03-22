@@ -18,7 +18,7 @@ function AddVoter() {
       setCurrentStatus(status);
     };
     getStatus();
-  }, [contract]);
+  }); //, [contract]
 
 
   const handleAddressChange = e => {

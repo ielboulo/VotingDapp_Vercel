@@ -20,7 +20,7 @@ function AddProposal() {
       setCurrentStatus(status);
     };
     getStatus();
-  }, [contract]);
+  }); //, [contract]
 
   const handleAddProposalChange = e => {
     setInputProposal(e.target.value);

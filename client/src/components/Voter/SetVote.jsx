@@ -20,8 +20,7 @@ useEffect(() => {
     setCurrentStatus(status);
   };
   getStatus();
-}, [contract]); // Ilham : check 
-
+}); // , [contract]
 
  const handleAddVoteChange = e => {
   if (/^\d+$|^$/.test(e.target.value)) {
