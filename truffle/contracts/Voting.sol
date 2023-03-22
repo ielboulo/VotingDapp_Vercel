@@ -59,7 +59,6 @@ contract Voting is Ownable {
     */
     constructor(){
         // we assume that the admin has also the right to vote 
-        //voters[msg.sender] = Voter(true, false, 0);
         voters[msg.sender].isRegistered = true;
         emit VoterRegistered(msg.sender); 
 
