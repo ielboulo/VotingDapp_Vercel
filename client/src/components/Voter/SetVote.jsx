@@ -30,8 +30,10 @@ useEffect(() => {
 
  const _addVote = async () => {
    try {
-    if( inputVote && parseInt(currentStatus) === 4) //VotingSessionEnded
+
+    if( inputVote && parseInt(currentStatus) === 3) //VotingSessionStarted
       {
+
         await contract.methods.setVote(inputVote).send({from : accounts[0]});
         toast.success("SUCCESS : You Voted ! ", {
           closeButton: true,
@@ -49,6 +51,8 @@ useEffect(() => {
       }
     }
        catch (err) {
+        console.log("_addVote currentStatus 4", currentStatus);
+
        console.error(err);
        toast.error("ERROR : Vote Failed!", {
         closeButton: true,

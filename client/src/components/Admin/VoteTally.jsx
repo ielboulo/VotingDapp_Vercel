@@ -20,6 +20,21 @@ function VoteTally() {
     getStatus();
   });
 
+  useEffect(() => {
+    if (!contract) {
+      return;
+    }
+    const event = contract.events.WorkflowStatusChange();
+    event.on('data', (eventData) => {
+      const { newStatus } = eventData.returnValues;
+      setCurrentStatus(newStatus);
+    });
+
+    return () => {
+      event.removeAllListeners();
+    }
+  });
+
   const handleTallyVote = async () => {
     setLoading(true); 
     try {
@@ -36,7 +51,7 @@ function VoteTally() {
       {
         toast.error("ERROR : Voting Session is Not Ended YET or Votes Tallied !", {
           closeButton: true,
-          autoClose: false,
+          autoClose: true,
           position: 'top-center',
         });
       }
@@ -45,7 +60,7 @@ function VoteTally() {
       console.error(err);
       toast.error("Vote Tally failed", {
         closeButton: true,
-        autoClose: false,
+        autoClose: true,
         position: 'top-center',
       });
     } finally {

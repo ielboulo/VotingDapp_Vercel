@@ -20,6 +20,21 @@ function VotePhase() {
     getStatus();
   });
 
+  useEffect(() => {
+    if (!contract) {
+      return;
+    }
+    const event = contract.events.WorkflowStatusChange();
+    event.on('data', (eventData) => {
+      const { newStatus } = eventData.returnValues;
+      setCurrentStatus(newStatus);
+    });
+
+    return () => {
+      event.removeAllListeners();
+    }
+  });
+
   const handleOpenVote = async () => {
     setLoading(true); 
     try {
@@ -35,6 +50,7 @@ function VotePhase() {
       }
       else
       {
+
         toast.error("ERROR : Voting Session Opening not Possible!", {
           closeButton: true,
           autoClose: true,

@@ -57,7 +57,7 @@ function AddVoter() {
         if (err.message.includes("Already registered")) {
           toast.error("ERROR : Address is already registered !", {
             closeButton: true,
-            autoClose: false,
+            autoClose: true,
             position: 'top-center',
           });
       }
